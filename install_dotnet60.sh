@@ -15,5 +15,11 @@ mkdir -p /.netRuntime/dotnet60
 cd /.netRuntime/dotnet60
 curl -L -o dotnet-sdk-6.0.101-linux-x64.tar.gz "https://dotnetcli.azureedge.net/dotnet/Sdk/6.0.101/dotnet-sdk-6.0.101-linux-x64.tar.gz"
 tar zxf dotnet-sdk-6.0.101-linux-x64.tar.gz -C /.netRuntime/dotnet60
+
+# Users
 echo export DOTNET_ROOT=/.netRuntime/dotnet60 >> /etc/bash.bashrc
 echo export PATH=\$PATH:/.netRuntime/dotnet60 >> /etc/bash.bashrc
+
+# Root
+echo export DOTNET_ROOT=/.netRuntime/dotnet60 >> /etc/skel/.bashrc
+echo export PATH=\$PATH:/.netRuntime/dotnet60 >> /etc/skel/.bashrc
