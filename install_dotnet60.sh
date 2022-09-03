@@ -8,6 +8,15 @@
 #
 # ARM64
 #    https://download.visualstudio.microsoft.com/download/pr/866ce4df-8aaa-417d-ad81-26131a2b8734/7ba8391188bc194156ee7d82f494ee00/dotnet-runtime-6.0.8-linux-arm64.tar.gz
+#
+# Script successfully tested on:
+#   - OpenSuse x64
+#   - Ubuntu Linux 20.04 (Workstation)
+#   - Ubuntu Linux 22.04 (Workstation)
+#   - Ubuntu Linux 22.04 (Server)
+#   - Linux Mint x64
+#   - Redhat Enterprise Linux 9
+
 
 mkdir -p /.netRuntime
 mkdir -p /.netRuntime/dotnet60
