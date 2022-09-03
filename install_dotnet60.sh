@@ -16,6 +16,7 @@
 #   - Ubuntu Linux 22.04 (Server)
 #   - Linux Mint x64
 #   - Redhat Enterprise Linux 9
+#   - Fedora X64
 
 
 mkdir -p /.netRuntime
@@ -26,14 +27,14 @@ tar zxf dotnet-runtime-6.0.8-linux-x64.tar.gz -C /.netRuntime/dotnet60
 
 # Set user Environment variables
 
-# Ubuntu
+# Ubuntu flavour
 FILE=/etc/bash.bashrc
 if test -f "$FILE"; then
     echo export DOTNET_ROOT=/.netRuntime/dotnet60 >> /etc/bash.bashrc
     echo export PATH=\$PATH:/.netRuntime/dotnet60 >> /etc/bash.bashrc
 fi
 
-# Fedora
+# Fedora/Redhat flavour
 FILE=/etc/bashrc 
 if test -f "$FILE"; then
     echo export DOTNET_ROOT=/.netRuntime/dotnet60 >> /etc/bashrc
