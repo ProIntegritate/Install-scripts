@@ -18,6 +18,7 @@
 #   - Linux Mint 20.2 x64
 #   - Redhat Enterprise Linux 9 (Server)
 #   - Fedora Linux 35 x64 (Workstation)
+#   - Amazon Linux 2
 
 
 mkdir -p /.netRuntime
