@@ -11,6 +11,7 @@
 #
 # Script successfully tested on:
 #   - OpenSuse Leap 15.3 x64
+#   - SUSE Enterprise Linux 15
 #   - Ubuntu Linux 20.04 (Workstation)
 #   - Ubuntu Linux 22.04 (Workstation)
 #   - Ubuntu Linux 22.04 (Server)
