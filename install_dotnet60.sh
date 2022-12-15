@@ -1,7 +1,7 @@
 #!/bin/bash
 # Chmod + SU, then start script
 #
-# Package paths for 6.0.12 (Decmber 15, 2022), source: https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+# Package paths for 6.0.12 (2022-Dec-15), source: https://dotnet.microsoft.com/en-us/download/dotnet/6.0
 #
 # X64 (Default in script)
 #    https://download.visualstudio.microsoft.com/download/pr/7d543956-0b80-4c08-910e-c8c388f5fab8/01d45a3686e72f70be51b3f98569c6b1/dotnet-runtime-6.0.12-linux-x64.tar.gz
