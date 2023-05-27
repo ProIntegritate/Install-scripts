@@ -1,13 +1,13 @@
 #!/bin/bash
 # Chmod + SU, then start script
 #
-# Package paths for 6.0.12 (2022-Dec-15), source: https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+# Package paths for 6.0.16 (2023-May-27), source: https://dotnet.microsoft.com/en-us/download/dotnet/6.0
 #
 # X64 (Default in script)
-#    https://download.visualstudio.microsoft.com/download/pr/7d543956-0b80-4c08-910e-c8c388f5fab8/01d45a3686e72f70be51b3f98569c6b1/dotnet-runtime-6.0.12-linux-x64.tar.gz
+#    https://download.visualstudio.microsoft.com/download/pr/45395f1b-8928-41c5-9585-f01d949b2afb/0911c4025fffc0f51c3ab535695c6ca6/dotnet-runtime-6.0.16-linux-x64.tar.gz
 #
 # ARM64
-#    https://download.visualstudio.microsoft.com/download/pr/cbcfbaa2-781b-4782-9994-9a9289ca724d/bc2fe2ee1a1842ea6d1151e5e0a410f9/dotnet-runtime-6.0.12-linux-arm64.tar.gz
+#    https://download.visualstudio.microsoft.com/download/pr/e7866e12-a380-4994-9c56-1bd3a1e0a546/22a5e54cb4e637c5aac7ec6dcab0d739/dotnet-runtime-6.0.16-linux-arm64.tar.gz
 #
 # Script successfully tested on 2022-Dec-15 with version 6.0.12 on:
 #   - Ubuntu Linux 22.04 (Workstation)
@@ -25,7 +25,7 @@
 mkdir -p /.netRuntime
 mkdir -p /.netRuntime/dotnet60
 cd /.netRuntime/dotnet60
-curl -L -o dotnet-runtime-6.0.12-linux-x64.tar.gz "https://download.visualstudio.microsoft.com/download/pr/7d543956-0b80-4c08-910e-c8c388f5fab8/01d45a3686e72f70be51b3f98569c6b1/dotnet-runtime-6.0.12-linux-x64.tar.gz"
+curl -L -o dotnet-runtime-6.0.12-linux-x64.tar.gz "https://download.visualstudio.microsoft.com/download/pr/45395f1b-8928-41c5-9585-f01d949b2afb/0911c4025fffc0f51c3ab535695c6ca6/dotnet-runtime-6.0.16-linux-x64.tar.gz"
 tar zxf dotnet-runtime-6.0.12-linux-x64.tar.gz -C /.netRuntime/dotnet60
 
 # Set user Environment variables
