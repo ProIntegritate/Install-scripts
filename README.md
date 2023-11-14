@@ -10,13 +10,13 @@ Each runtime version is installed in it's separate folder allowing you to switch
 
 
 # Config files
-Change these if you want to switch versions, Change DOTNET_ROOT and PATH in these files respectively:
+Change these if you want to switch versions, Change **DOTNET_ROOT** and **PATH** in these files respectively:
 
-### Root Environment variables
+### Root Environment variables (must always be updated)
 /etc/skel/.bashrc
 
-### Ubuntu flavour
+### Ubuntu flavour (optional)
 /etc/bash.bashrc
 
-### Fedora/Redhat flavour
+### Fedora/Redhat flavour (optional)
 /etc/bashrc 
