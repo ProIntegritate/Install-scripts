@@ -25,8 +25,8 @@
 mkdir -p /.netRuntime
 mkdir -p /.netRuntime/dotnet60
 cd /.netRuntime/dotnet60
-curl -L -o dotnet-runtime-6.0.12-linux-x64.tar.gz "https://download.visualstudio.microsoft.com/download/pr/45395f1b-8928-41c5-9585-f01d949b2afb/0911c4025fffc0f51c3ab535695c6ca6/dotnet-runtime-6.0.16-linux-x64.tar.gz"
-tar zxf dotnet-runtime-6.0.12-linux-x64.tar.gz -C /.netRuntime/dotnet60
+curl -L -o dotnet-runtime-6.0.24-linux-x64.tar.gz "https://download.visualstudio.microsoft.com/download/pr/872b4f32-dd0d-49e5-bca3-2b27314286a7/e72d2be582895b7053912deb45a4677d/dotnet-runtime-6.0.24-linux-x64.tar.gz"
+tar zxf dotnet-runtime-6.0.24-linux-x64.tar.gz -C /.netRuntime/dotnet60
 
 # Set user Environment variables
 
@@ -47,3 +47,4 @@ fi
 # Set Root Environment variables
 echo export DOTNET_ROOT=/.netRuntime/dotnet60 >> /etc/skel/.bashrc
 echo export PATH=\$PATH:/.netRuntime/dotnet60 >> /etc/skel/.bashrc
+
