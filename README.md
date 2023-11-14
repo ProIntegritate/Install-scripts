@@ -8,15 +8,15 @@ Installation scripts for Linux .NET runtime
 The Linux install scripts for .NET (5,6,8) allow you to install and setup path +  Export variables to be able to run binaries compiled under one or the other.
 Each runtime version is installed in it's separate folder allowing you to switch between version just by editing the config files.
 
+
 #Config files
 Change these if you want to switch versions, Change DOTNET_ROOT and PATH in these files respectively:
 
+##Root Environment variables
+/etc/skel/.bashrc
+
 ##Ubuntu flavour
-  /etc/bash.bashrc
+/etc/bash.bashrc
 
 ##Fedora/Redhat flavour
-  /etc/bashrc 
-
-##Finally, set Root Environment variables
-  /etc/skel/.bashrc
-
+/etc/bashrc 
