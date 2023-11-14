@@ -1,7 +1,7 @@
 # Install-scripts
 Installation scripts
 
-- install_dotnet50.sh = Install .NET Core 5 on Linux (Custom script, quick and dirty)
+- install_dotnet50.sh = Install .NET Core 5 on Linux (Custom script, quick and dirty)   Fetches version 5.0.404
 - install_dotnet60.sh = Install .NET Core 6 on Linux (Custom script, quick and dirty)   Fetches version 6.0.24
 
 The Linux install scripts for .NET core allow you to install both and just change the Export variables to be able to run binaries compiled under one or the other.
