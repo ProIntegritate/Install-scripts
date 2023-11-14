@@ -1,5 +1,5 @@
 # Install-scripts
-Installation scripts for Linux .NET runtime
+Minimal Installation scripts for Linux .NET runtime
 
 **Note: Currently requires CURL**
 You can change the scripts to use wget if you prefer that.
