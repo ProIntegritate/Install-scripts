@@ -1,6 +1,9 @@
 # Install-scripts
 Installation scripts for Linux .NET runtime
 
+**Note: Currently requires CURL**
+You can change the scripts to use wget if you prefer that.
+
 - install_dotnet50.sh = Install .NET 5 on Linux (Custom script, quick and dirty)   Fetches version 5.0.404
 - install_dotnet60.sh = Install .NET 6 on Linux (Custom script, quick and dirty)   Fetches version 6.0.24
 - install_dotnet80.sh = Currently just a placeholder.
