@@ -12,6 +12,8 @@ You can change the scripts to use wget if you prefer that.
 The Linux install scripts for .NET (5,6,8) allow you to install and setup path +  Export variables to be able to run binaries compiled under one or the other.
 Each runtime version is installed in it's separate folder allowing you to switch between version just by editing the config files.
 
+The install scripts are not always current, i only update these script ocasionally so if you want the latest version, make sure to modify the script get the most current URL.
+
 
 # Config files
 Change these if you want to switch versions, Change **DOTNET_ROOT** and **PATH** in these files respectively:
