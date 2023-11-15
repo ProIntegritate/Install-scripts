@@ -16,7 +16,7 @@ The install scripts are not always current, i only update these script ocasional
 
 
 # Config files
-Change these if you want to switch versions, Change **DOTNET_ROOT** and **PATH** in these files respectively:
+Change these if you manually want to switch versions, Change **DOTNET_ROOT** and **PATH** in these files respectively:
 
 ### Root Environment variables (must always be updated)
 /etc/skel/.bashrc
