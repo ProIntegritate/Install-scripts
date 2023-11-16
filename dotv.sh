@@ -6,8 +6,8 @@
 if [ -z "$1" ]
   then
     echo "Usage examples:"
-    echo "sudo dotv.sh 80 = will set paths to /.netRuntime/dotnet80"
-    echo "sudo dotv.sh 60 = will set paths to /.netRuntime/dotnet60"
+    echo "sudo ./dotv.sh 80 = will set paths to /.netRuntime/dotnet80"
+    echo "sudo ./dotv.sh 60 = will set paths to /.netRuntime/dotnet60"
     exit 0
 fi
 
