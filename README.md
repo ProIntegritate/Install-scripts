@@ -18,7 +18,7 @@ The install scripts are not always current, i only update these script ocasional
 # Change version (dotv.sh)
 Use the dotv.sh script to set current dotnet runtime version, examples:
 
-_sudo ./dotv.sh 80   = will set paths to /.netRuntime/dotnet80
+_sudo ./dotv.sh 80   = will set paths to /.netRuntime/dotnet80<br>
 sudo ./dotv.sh 60   = will set paths to /.netRuntime/dotnet60_
 
 Once you have changed paths, you should restart your shell to reflect the changes in environment variables.
