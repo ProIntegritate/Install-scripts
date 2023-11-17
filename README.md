@@ -1,7 +1,7 @@
 # Install-scripts
 Minimal Installation scripts for Linux (X64) .NET runtime
 
-**Note: Currently requires CURL**
+**Note: This currently requires CURL**
 You can change the scripts to use wget if you prefer that.
 
 - install_dotnet50.sh = Install .NET 5 on Linux (Custom script, quick and dirty)   Fetches version 5.0.404
@@ -15,7 +15,17 @@ Each runtime version is installed in it's separate folder allowing you to switch
 The install scripts are not always current, i only update these script ocasionally so if you want the latest version, make sure to modify the script get the most current URL.
 
 
-# Config files
+# Change version (dotv.sh)
+Use the dotv.sh script to set current dotnet runtime version, examples:
+
+_sudo ./dotv.sh 80   = will set paths to /.netRuntime/dotnet80
+sudo ./dotv.sh 60   = will set paths to /.netRuntime/dotnet60_
+
+Once you have changed paths, you should restart your shell to reflect the changes in environment variables.
+One tips to save time is to run a shell in a shell, like bash -> bash, and then just exit that shell and restart a new one.
+
+
+# Manually change config files
 Change these if you manually want to switch versions, Change **DOTNET_ROOT** and **PATH** in these files respectively:
 
 ### Root Environment variables (must always be updated)
