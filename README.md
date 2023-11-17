@@ -4,10 +4,12 @@ Minimal Installation scripts for Linux (X64) .NET runtime
 **Note: This currently requires CURL**
 You can change the scripts to use wget if you prefer that.
 
-- install_dotnet50.sh = Install .NET 5 on Linux (Custom script, quick and dirty)   Fetches version 5.0.404
-- install_dotnet60.sh = Install .NET 6 on Linux (Custom script, quick and dirty)   Fetches version 6.0.24
-- install_dotnet80.sh = Install .NET 8 on Linux (Custom script, quick and dirty)   Fetches version 8.0.0
+- install_dotnet50.sh = Install .NET 5 on Linux  <- Fetches version 5.0.404
+- install_dotnet60.sh = Install .NET 6 on Linux  <- Fetches version 6.0.24
+- install_dotnet80.sh = Install .NET 8 on Linux  <- Fetches version 8.0.0
 - dotv.sh = Script to change between versions, sets all environmental variables automagically.
+
+Install path will be /.netRuntime/dotnetXX where XX is the version number. You can edit this in the script if you want before running it.
 
 The Linux install scripts for .NET (5,6,8) allow you to install and setup path +  Export variables to be able to run binaries compiled under one or the other.
 Each runtime version is installed in it's separate folder allowing you to switch between version just by editing the config files.
