@@ -1,50 +1,95 @@
 #!/bin/bash
-# Chmod + SU, then start script
-#
-# Package paths for 6.0.16 (2023-May-27), source: https://dotnet.microsoft.com/en-us/download/dotnet/6.0
-#
-# X64 (Default in script)
-#    https://download.visualstudio.microsoft.com/download/pr/45395f1b-8928-41c5-9585-f01d949b2afb/0911c4025fffc0f51c3ab535695c6ca6/dotnet-runtime-6.0.16-linux-x64.tar.gz
-#
-# ARM64
-#    https://download.visualstudio.microsoft.com/download/pr/e7866e12-a380-4994-9c56-1bd3a1e0a546/22a5e54cb4e637c5aac7ec6dcab0d739/dotnet-runtime-6.0.16-linux-arm64.tar.gz
-#
-# Script successfully tested on 2022-Dec-15 with version 6.0.12 on:
-#   - Ubuntu Linux 22.04 (Workstation)
-#
-# Script tested earlier (6.0.8) with:
-#   - OpenSuse Leap 15.3 x64
-#   - SUSE Enterprise Linux 15
-#   - Ubuntu Linux 20.04 (Workstation)
-#   - Ubuntu Linux 22.04 (Server)
-#   - Linux Mint 20.2 x64
-#   - Redhat Enterprise Linux 9 (Server)
-#   - Fedora Linux 35 x64 (Workstation)
-#   - Amazon Linux 2
+# Chmod and then start script with sudo
 
+if [ "$EUID" -ne 0 ]
+	then echo "Please run as root, i.e. sudo ./scriptname"
+	exit 1
+fi
+
+clear
+
+
+# ---- Set installation Environment variables for dotnet ----
+
+DOTNET=dotnet60
+echo "* Setting dotnet version: $DOTNET"
+
+DOWNLOADURL="https://download.visualstudio.microsoft.com/download/pr/872b4f32-dd0d-49e5-bca3-2b27314286a7/e72d2be582895b7053912deb45a4677d/dotnet-runtime-6.0.24-linux-x64.tar.gz"
+
+
+# ---- Set up installation path ----
 mkdir -p /.netRuntime
-mkdir -p /.netRuntime/dotnet60
-cd /.netRuntime/dotnet60
-curl -L -o dotnet-runtime-6.0.24-linux-x64.tar.gz "https://download.visualstudio.microsoft.com/download/pr/872b4f32-dd0d-49e5-bca3-2b27314286a7/e72d2be582895b7053912deb45a4677d/dotnet-runtime-6.0.24-linux-x64.tar.gz"
-tar zxf dotnet-runtime-6.0.24-linux-x64.tar.gz -C /.netRuntime/dotnet60
+mkdir -p /.netRuntime/$DOTNET
+cd /.netRuntime/$DOTNET
 
-# Set user Environment variables
 
-# Ubuntu flavour
-FILE=/etc/bash.bashrc
+# ---- Check for tool(s) to download installation package ----
+
+# WGet
+FILE=/usr/bin/wget
 if test -f "$FILE"; then
-    echo export DOTNET_ROOT=/.netRuntime/dotnet60 >> /etc/bash.bashrc
-    echo export PATH=\$PATH:/.netRuntime/dotnet60 >> /etc/bash.bashrc
+	TOOL=$FILE
 fi
 
-# Fedora/Redhat flavour
-FILE=/etc/bashrc 
+# Curl
+FILE=/usr/bin/curl
 if test -f "$FILE"; then
-    echo export DOTNET_ROOT=/.netRuntime/dotnet60 >> /etc/bashrc
-    echo export PATH=\$PATH:/.netRuntime/dotnet60 >> /etc/bashrc
+	if [ -z "$TOOL" ]; then
+		TOOL=$FILE
+	fi
 fi
 
-# Set Root Environment variables
-echo export DOTNET_ROOT=/.netRuntime/dotnet60 >> /etc/skel/.bashrc
-echo export PATH=\$PATH:/.netRuntime/dotnet60 >> /etc/skel/.bashrc
+
+# ---- Download ----
+echo "Using $TOOL to download installation package."
+
+case $TOOL in
+
+	/usr/bin/wget)
+		wget $DOWNLOADURL -O download.tar.gz
+		;;
+	/usr/bin/curl)
+		curl -L $DOWNLOADURL -o download.tar.gz 
+		;;
+	*)
+		echo "No tool capable of downloads found"
+		exit 1
+esac
+
+
+# ---- Unpack ----
+tar zxf download.tar.gz -C /.netRuntime/$DOTNET
+rm download.tar.gz
+
+
+# ---- Function for processing config files ----
+function processfile() {
+	if test -f "$FILE"; then
+		echo "* Modifying $FILE"
+		cp $FILE $FILE.bak
+		cat $FILE | grep -v "netRuntime" > $FILE.new
+		mv $FILE.new $FILE
+		echo export DOTNET_ROOT=/.netRuntime/$DOTNET >> $FILE
+		echo export PATH=\$PATH:/.netRuntime/$DOTNET >> $FILE
+	fi
+}
+
+
+# ---- Set user Environment variables ----
+echo "Processing configuration files:"
+
+	# Set Root (Common) Environment variables
+	FILE=/etc/skel/.bashrc
+	echo "$FILE"
+	processfile
+
+	# Ubuntu flavour
+	FILE=/etc/bash.bashrc
+	echo "$FILE"
+	processfile
+
+	# Fedora/Redhat flavour
+	FILE=/etc/bashrc 
+	echo "$FILE"
+	processfile
 
