@@ -3,6 +3,11 @@
 # Will create backups of bash config files before modifying them.
 # Requires root/sudo privileges.
 
+if [ "$EUID" -ne 0 ]
+	then echo "Please run as root, i.e. sudo ./scriptname"
+	exit 1
+fi
+
 if [ -z "$1" ]
   then
     echo "Usage examples:"
