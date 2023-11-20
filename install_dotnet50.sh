@@ -1,21 +1,95 @@
 #!/bin/bash
-# Chmod and run as SU
-#
-# Package paths for 5.0:
-# "https://download.visualstudio.microsoft.com/download/pr/21bf6b86-84a9-4cc4-9713-c812c18b1504/8ef52712e25b5075b91dd51b85ae170d/dotnet-sdk-5.0.404-linux-arm64.tar.gz"
-# "https://download.visualstudio.microsoft.com/download/pr/2c1eb8c8-ac05-4dc7-9bef-307b3e450e9d/75e85b3d1662f60afd69572fd5df6884/dotnet-sdk-5.0.404-linux-x64.tar.gz"
+# Chmod and then start script with sudo
 
+if [ "$EUID" -ne 0 ]
+	then echo "Please run as root, i.e. sudo ./scriptname"
+	exit 1
+fi
+
+clear
+
+
+# ---- Set installation Environment variables for dotnet ----
+
+DOTNET=dotnet50
+echo "* Setting dotnet version: $DOTNET"
+
+DOWNLOADURL="https://download.visualstudio.microsoft.com/download/pr/e77438f6-865f-45e0-9a52-3e4b04aa609f/024a880ed4bfbfd3b9f222fec0b6aaff/dotnet-runtime-5.0.17-linux-x64.tar.gz"
+
+
+# ---- Set up installation path ----
 mkdir -p /.netRuntime
-mkdir -p /.netRuntime/dotnet50
-cd /.netRuntime/dotnet50
-curl -L -o dotnet-sdk-5.0.404-linux-x64.tar.gz "https://download.visualstudio.microsoft.com/download/pr/2c1eb8c8-ac05-4dc7-9bef-307b3e450e9d/75e85b3d1662f60afd69572fd5df6884/dotnet-sdk-5.0.404-linux-x64.tar.gz"
-tar zxf dotnet-sdk-5.0.404-linux-x64.tar.gz -C /.netRuntime/dotnet50
+mkdir -p /.netRuntime/$DOTNET
+cd /.netRuntime/$DOTNET
 
-# Users
-echo export DOTNET_ROOT=/.netRuntime/dotnet50 >> /etc/bash.bashrc
-echo export PATH=\$PATH:/.netRuntime/dotnet50 >> /etc/bash.bashrc
 
-# Root
-echo export DOTNET_ROOT=/.netRuntime/dotnet50 >> /etc/skel/.bashrc
-echo export PATH=\$PATH:/.netRuntime/dotnet50 >> /etc/skel/.bashrc
+# ---- Check for tool(s) to download installation package ----
+
+# WGet
+FILE=/usr/bin/wget
+if test -f "$FILE"; then
+	TOOL=$FILE
+fi
+
+# Curl
+FILE=/usr/bin/curl
+if test -f "$FILE"; then
+	if [ -z "$TOOL" ]; then
+		TOOL=$FILE
+	fi
+fi
+
+
+# ---- Download ----
+echo "Using $TOOL to download installation package."
+
+case $TOOL in
+
+	/usr/bin/wget)
+		wget $DOWNLOADURL -O download.tar.gz
+		;;
+	/usr/bin/curl)
+		curl -L $DOWNLOADURL -o download.tar.gz 
+		;;
+	*)
+		echo "No tool capable of downloads found"
+		exit 1
+esac
+
+
+# ---- Unpack ----
+tar zxf download.tar.gz -C /.netRuntime/$DOTNET
+rm download.tar.gz
+
+
+# ---- Function for processing config files ----
+function processfile() {
+	if test -f "$FILE"; then
+		echo "* Modifying $FILE"
+		cp $FILE $FILE.bak
+		cat $FILE | grep -v "netRuntime" > $FILE.new
+		mv $FILE.new $FILE
+		echo export DOTNET_ROOT=/.netRuntime/$DOTNET >> $FILE
+		echo export PATH=\$PATH:/.netRuntime/$DOTNET >> $FILE
+	fi
+}
+
+
+# ---- Set user Environment variables ----
+echo "Processing configuration files:"
+
+	# Set Root (Common) Environment variables
+	FILE=/etc/skel/.bashrc
+	echo "$FILE"
+	processfile
+
+	# Ubuntu flavour
+	FILE=/etc/bash.bashrc
+	echo "$FILE"
+	processfile
+
+	# Fedora/Redhat flavour
+	FILE=/etc/bashrc 
+	echo "$FILE"
+	processfile
 
