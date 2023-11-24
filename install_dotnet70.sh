@@ -1,5 +1,6 @@
 #!/bin/bash
 # Chmod and then start script with sudo
+# Packages can be found at: https://dotnet.microsoft.com/en-us/download/dotnet/7.0
 
 if [ "$EUID" -ne 0 ]
 	then echo "Please run as root, i.e. sudo ./scriptname"
