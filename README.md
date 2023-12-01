@@ -4,7 +4,7 @@ Minimal Installation scripts for Linux (X64) .NET runtime
 Uses WGET or CURL to fetch install packages. Requires an elevated prompt, use sudo when installing.
 
 - install_dotnet50.sh = Install .NET 5 on Linux  <- Fetches version 5.0.17
-- install_dotnet60.sh = Install .NET 6 on Linux  <- Fetches version 6.0.24
+- install_dotnet60.sh = Install .NET 6 on Linux  <- Fetches version 6.0.25
 - install_dotnet70.sh = Install .NET 7 on Linux  <- Fetches version 7.0.14
 - install_dotnet80.sh = Install .NET 8 on Linux  <- Fetches version 8.0.0
 - dotv.sh = Script to change between versions, sets all environmental variables automagically.
