@@ -15,7 +15,7 @@ clear
 DOTNET=dotnet60
 echo "* Setting dotnet version: $DOTNET"
 
-DOWNLOADURL="https://download.visualstudio.microsoft.com/download/pr/a066873e-e4f6-4538-a225-4170e2950af2/7e3b369dee3fb19cf193823e158f3b6b/dotnet-runtime-6.0.29-linux-x64.tar.gz"
+DOWNLOADURL="https://download.visualstudio.microsoft.com/download/pr/37d9269f-d651-4248-beae-ccfbf4dc34fc/17809ba306015df6406cf4338b5cc576/dotnet-runtime-6.0.32-linux-x64.tar.gz"
 
 
 # ---- Set up installation path ----
