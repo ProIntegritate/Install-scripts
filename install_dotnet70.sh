@@ -1,6 +1,7 @@
 #!/bin/bash
 # Chmod and then start script with sudo
 # Packages can be found at: https://dotnet.microsoft.com/en-us/download/dotnet/7.0
+# This release is now END OF LIFE
 
 if [ "$EUID" -ne 0 ]
 	then echo "Please run as root, i.e. sudo ./scriptname"
@@ -15,7 +16,7 @@ clear
 DOTNET=dotnet70
 echo "* Setting dotnet version: $DOTNET"
 
-DOWNLOADURL="https://download.visualstudio.microsoft.com/download/pr/9f48eeb2-ca25-4828-87d9-1114e751fa6e/df269cfd6b9661bcd776ed979541c0fe/dotnet-runtime-7.0.18-linux-x64.tar.gz"
+DOWNLOADURL="https://download.visualstudio.microsoft.com/download/pr/2c5981ff-0f0c-47ab-bff4-0ea4919b395b/cbfdfa7f35d133b0bdef87fa3830bfa0/dotnet-runtime-7.0.20-linux-x64.tar.gz"
 
 # ---- Set up installation path ----
 mkdir -p /.netRuntime
