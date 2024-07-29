@@ -15,7 +15,7 @@ clear
 DOTNET=dotnet90
 echo "* Setting dotnet version: $DOTNET"
 
-DOWNLOADURL="https://download.visualstudio.microsoft.com/download/pr/37747dcd-c967-4c91-8928-959b32b706bc/2cb1cf0735fcea5d7eadda52bd5a6cc2/aspnetcore-runtime-9.0.0-preview.3.24172.13-linux-x64.tar.gz"
+DOWNLOADURL="https://download.visualstudio.microsoft.com/download/pr/484c439d-3a87-4eb9-9a08-683a1c2bb334/0edb0aa500ff6bfa446940e1773ff203/dotnet-runtime-9.0.0-preview.6.24327.7-linux-x64.tar.gz"
 
 
 # ---- Set up installation path ----
