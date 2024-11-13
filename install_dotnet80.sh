@@ -15,7 +15,7 @@ clear
 DOTNET=dotnet80
 echo "* Setting dotnet version: $DOTNET"
 
-DOWNLOADURL="https://download.visualstudio.microsoft.com/download/pr/68c87f8a-862c-4870-a792-9c89b3c8aa2d/2319ebfb46d3a903341966586e8b0898/dotnet-runtime-8.0.8-linux-x64.tar.gz"
+DOWNLOADURL="https://download.visualstudio.microsoft.com/download/pr/805cdca8-ac43-4d76-8ce8-efd11f1997f2/17aeb8b0cd34c6f8d80217bf6a4ed3cd/dotnet-runtime-8.0.11-linux-x64.tar.gz"
 
 # ---- Set up installation path ----
 mkdir -p /.netRuntime
